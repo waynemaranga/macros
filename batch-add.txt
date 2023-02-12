@@ -1,0 +1,22 @@
+Sub BatchAddAutoCorrectEntries()
+  Dim objTable As Table
+  Dim objOriginalWord As Cell
+  Dim objOriginalWordRange As Range
+  Dim objReplaceWordRange As Range
+  Dim nRowNumber As Integer
+ 
+  Set objTable = ActiveDocument.Tables(1)
+  nRowNumber = 1
+  For Each objOriginalWord In objTable.Columns(1).Cells 
+    Set objOriginalWordRange = objOriginalWord.Range
+    objOriginalWordRange.MoveEnd Unit:=wdCharacter, Count:=-1
+    Set objReplaceWordRange = objTable.Cell(nRowNumber, 2).Range
+    objReplaceWordRange.MoveEnd Unit:=wdCharacter, Count:=-1
+ 
+    AutoCorrect.Entries.Add Name:=objOriginalWordRange.Text, Value:=objReplaceWordRange.Text
+ 
+    nRowNumber = nRowNumber + 1
+  Next objOriginalWord
+ 
+  Msgbox("All autocorrect items in the table1??? are added.")
+End Sub
