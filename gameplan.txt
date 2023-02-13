@@ -1,0 +1,10 @@
+macros:
+1. units of measurement
+2. greek letters
+3. actions
+4. resistances
+5. partial safety factors
+6. modification factors
+7. reduction factors
+8. misc. factors
+9. equations
